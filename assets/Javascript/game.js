@@ -1,40 +1,79 @@
-// press any key to start
+// Global Variables
 
-//declare variables
-var wins =0;
-var losses = 0;
-var maxGuess =10;
-// create an array of words for the computer guess
-var wordList = ["spike","cleat","coach","strike","ball","basket"]
-
-// display computer word in hidden mode
-var computerWord = wordList[Math.floor(Math.random() * wordList.length)];
-
+var wins = 0;
+var losses =0;
+var wronGuess = [];
+var guessesLeft =10;
 var blankArray = [];
-    for (var i = 0; i < computerWord.length; i++) {
-        blankArray[i] = " _ "
+var lettersUsed = [];
+var corectWord = 0;
+var computerWord;
+
+var wordList =["baseball", "soccer", "football", "coach", "birdie", "strike", "tackel"];
+
+// Logic for game
+function startGame() {
+  
+    //Generate random word from the list
+    computerWord = wordList[Math.floor(Math.random() * wordList.length)];
+    console.log(computerWord);
+  
+    //sets lettesrs in word to blank spaces "_"
+    for(var i = 0; i < computerWord.length; i++){
+        blankArray.push("_");
+        console.log(blankArray);
     }
-    console.log(blankArray);
-
-// listen for what key user presses
-document.onkeyup =function(event) {
-    var userGuess = event.key;
-    console.log(userGuess)
+    
 }
-//if letter user selects matches any in computer guess display letter
-function letterCheck(userGuess) {
-
-    for (var i=0; i < wordList[computerWord].length;i++) {
-        if(wordList[computerWord][i] === letter) {
-            blankArray.push(i);
+// What happens when you win or lose
+function winner(){
+    if(corectWord === computerWord.length){
+        wins++;
+        alert("winner");
+        console.log(wins);
+    }
+}
+function losser(){
+    if(guessesLeft === 0){
+        losses++
+        alert("loser")
+        console.log(losses);
+    }
+}
+// onkey evnt to log user input
+document.onkeyup = function(event){
+    
+    userGuess = event.key;
+    console.log(userGuess);
+    
+    if(computerWord.includes(userGuess)) {
+        for( var i=0; i< computerWord.length; i++){
+            if(computerWord[i] === userGuess){
+                blankArray[i] = userGuess;
+                corectWord++;
+                winner();
+            }
         }
+        console.log("correct");
+        console.log(blankArray);
     }
-}
-console.log(blankArray)
-//if letter does not match subtract 1 from guess count
+    else {
+        lettersUsed.push(userGuess);
+        guessesLeft--;
+        losser();
+        console.log(guessesLeft);
+    }
+} 
+
+//What happens whe you win or lose
 
 
-// if guess cout = 0 display loss image and increase losses by 1
+// Call functions
+startGame();
 
-// if user gets all the letters in computer guess display win image and increase wins by 1
-
+// Shows blank letters on "blank-word" ID
+document.getElementById("blank-word").innerHTML = blankArray;
+document.getElementById("wins").innerHTML = wins;
+document.getElementById("losses").innerHTML = losses;
+document.getElementById("guessCount").innerHTML = guessesLeft;
+document.getElementById("lettersGuessed").innerHTML = lettersUsed;
