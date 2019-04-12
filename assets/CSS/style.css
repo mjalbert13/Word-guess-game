@@ -1,0 +1,102 @@
+body{
+    height: 100%;
+    margin: 0;
+    color: royalblue;
+    font-family: 'Press Start 2P', cursive;
+    background-image: url(../images/tecmo.jpg);
+}
+.wraper {
+    text-align: center;
+}
+.container {
+    width: 900px;
+    min-height: 100%;
+    margin-top: 60px;
+    margin-left: 18%;
+    display: inline-block;
+}
+
+.Header {
+    text-align: center;
+    font-size: 40px;
+    color: firebrick;
+    width: 90%;
+    padding: 10px;
+    margin: 20px;
+    background: wheat;
+    border: 4px solid brown;
+    position: relative;
+}
+
+.start {
+   text-align: center;
+    width: 90%;
+    padding: 10px;
+    margin: 20px;
+    background: wheat;
+    border: 3px solid yellow;
+}
+
+.word {
+    text-align: center;
+    font-size: 30px;
+    width: 90%;
+    height: 100px;
+    padding: 10px;
+    margin: 20px;
+    background: wheat;
+    border: 3px solid black;
+}
+
+.letters {
+   text-align: center;
+    width: 55%;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 10px; 
+    padding: 15px;
+    background: wheat;
+    border: 3px solid blue;
+    float: left;
+}
+
+.count {
+    width: 28%;
+    height: 40px;
+    margin-top: 10px;
+    text-align: center;
+    padding: 15px;
+    background: wheat;
+    border: 3px solid red;
+    float: left;
+}
+
+.victories {
+    text-align: center;
+    width: 43%;
+    height: 40px;
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-right: 20px;
+    background: wheat;
+    border: 3px solid green;
+    float: left;
+}
+
+.defeat {
+    text-align: center;
+    width: 43%;
+    height: 40px;
+    padding: 10px;
+    margin-top: 10px;
+    background: wheat;
+    border: 3px solid teal;
+    float: left;
+}
+.clear {
+    clear: both;
+}
+
+
