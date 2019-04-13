@@ -1,5 +1,5 @@
 // Global Variables
-var isPlaying = true;
+var isPlaying = false;
 var wins = 0;
 var losses =0;
 var guessesLeft =10;
@@ -7,39 +7,25 @@ var blankArray = [];
 var lettersUsed = [];
 var corectWord = 0;
 var computerWord;
-var newWord = [];
 
-var wordList =["baseball", "soccer", "football", "coach", "birdie", "strike", "tackel", "olympics", "skiing", "slamdunk", "groundout", "umpire", "dugout", "goalie", "slapshot"];
-
+var wordList =["baseball", "soccer", "football", "coach", "birdie", "strike", "tackel", "olympics", "skiing", "slamdunk", "grounder", "umpire", "dugout", "goalie", "slapshot"];
 
 // Logic for game
-function resSet() {
+function resSet(){
     if(userGuess = event.key){
         newGame();
     }
 }
 
-function startGame() {
-  
-    //Generate random word from the list
-    computerWord = wordList[Math.floor(Math.random() * wordList.length)];
-    console.log(computerWord);
-  
-    //sets letters in word to blank spaces "_"
-    for(var i = 0; i < computerWord.length; i++){
-        blankArray.push(" _");
-        document.getElementById("blank-word").innerHTML = blankArray;
-        console.log(blankArray);
-    }
 
-}
-//Function to restart the game after win or loss
+//Function to start and restart the game after win or loss
 function newGame(){
 
     corectWord = 0;
     lettersUsed = [];
     blankArray = [];
     guessesLeft = 10;
+    isPlaying  = true;
 
     computerWord = wordList[Math.floor(Math.random() * wordList.length)];
     console.log(computerWord);
@@ -54,11 +40,10 @@ function newGame(){
     
 // What happens when you win or lose
 function winner(){
-    if(corectWord === computerWord.length){
+    if(blankArray.indexOf(" _") ==-1){
         wins++;
         document.getElementById("wins").innerHTML = wins;
-        alert("winner");
-        winPic();
+        alert("Winner Winner chicken dinner! Press ok to play again.");
         resSet();
         console.log(wins);
     }
@@ -67,25 +52,14 @@ function losser(){
     if(guessesLeft === 0){
         losses++
         document.getElementById("losses").innerHTML = losses;
-        alert("loser")
-        lossPic();
+        alert("You lost! press ok to play again.");
         resSet();
         console.log(losses);
     }
-}
-function winPic() {
-    var winImg = new Image(innerWidth 400, innerHeight 400);
-    winImg src="../images/win-pic.jpg";
-    document.body.appendChild(winImg);
+
 }
 
-function lossPic(){
-    var lossImg = new Image(innerWidth: 400, innerHeight: 400);
-    lossImg src="../images/loss-pic.jpg";
-    document.body.appendChild(lossImg);
-} 
-
-// onkey evnet to log user input
+// onkey event to log user input
 document.onkeyup = function(event){
     
     userGuess = event.key;
@@ -114,8 +88,8 @@ document.onkeyup = function(event){
 } 
 
 // Call functions
-startGame();
-//resSet();
+newGame();
+
 
 
 
